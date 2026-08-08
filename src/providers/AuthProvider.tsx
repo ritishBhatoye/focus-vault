@@ -100,14 +100,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   if (!isInitialized) {
     return (
-      <View
-        style={{
-          flex: 1,
-          justifyContent: "center",
-          alignItems: "center",
-          backgroundColor: "#0A0A0A",
-        }}
-      >
+      <View className="flex-1 justify-center items-center bg-black">
         <ActivityIndicator size="large" color="#FAFAFA" />
       </View>
     );
