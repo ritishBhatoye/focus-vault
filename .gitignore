@@ -12,3 +12,4 @@ node_modules/
 # Ignored files
 *.md
 supabase-schema.sql
+STITCH_PROMPT_ULTRA_SHORT.txt
