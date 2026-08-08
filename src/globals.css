@@ -1,0 +1,51 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+  --color-background: #000000;
+  --color-surface: #131313;
+  --color-surface-container-lowest: #0e0e0e;
+  --color-surface-container-low: #1c1b1b;
+  --color-surface-container: #201f1f;
+  --color-surface-container-high: #2a2a2a;
+  --color-surface-container-highest: #353534;
+  --color-primary: #d2bbff;
+  --color-primary-container: #7c3aed;
+  --color-secondary: #4fdbc8;
+  --color-secondary-container: #04b4a2;
+  --color-tertiary: #ffb95f;
+  --color-tertiary-container: #905b00;
+  --color-error: #ffb4ab;
+  --color-on-surface: #e5e2e1;
+  --color-on-surface-variant: #ccc3d8;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@layer utilities {
+  .glass {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .glass-card {
+    background-color: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .glow-ring {
+    box-shadow: 0 0 40px 10px rgba(124, 58, 237, 0.15), inset 0 0 40px 10px rgba(124, 58, 237, 0.15);
+  }
+}
