@@ -1,20 +1,29 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Alert, KeyboardAvoidingView, Platform, ScrollView } from 'react-native';
-import { useRouter } from 'expo-router';
-import { supabase } from '@/lib/supabase';
-import { Button, GlassCard } from '@/components/ui';
-import { PressableScale } from '@/components/animations';
-import { LinearGradient } from 'expo-linear-gradient';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+} from "react-native";
+import { useRouter } from "expo-router";
+import { supabase } from "@/lib/supabase";
+import { Button, GlassCard } from "@/components/ui";
+import { PressableScale } from "@/components/animations";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function LoginScreen() {
   const router = useRouter();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async () => {
     if (!email || !password) {
-      Alert.alert('Error', 'Please fill in all fields');
+      Alert.alert("Error", "Please fill in all fields");
       return;
     }
 
@@ -26,9 +35,9 @@ export default function LoginScreen() {
       });
 
       if (error) throw error;
-      router.replace('/(main)');
+      router.replace("/(main)");
     } catch (error: any) {
-      Alert.alert('Login Failed', error.message);
+      Alert.alert("Login Failed", error.message);
     } finally {
       setLoading(false);
     }
@@ -37,35 +46,37 @@ export default function LoginScreen() {
   const handleGoogleSignIn = async () => {
     try {
       const { error } = await supabase.auth.signInWithOAuth({
-        provider: 'google',
+        provider: "google",
         options: {
-          redirectTo: 'focusvault://oauth-callback',
+          redirectTo: "focusvault://oauth-callback",
         },
       });
       if (error) throw error;
     } catch (error: any) {
-      Alert.alert('Error', error.message);
+      Alert.alert("Error", error.message);
     }
   };
 
   return (
     <LinearGradient
-      colors={['#0A0A0A', '#141414', '#0A0A0A']}
+      colors={["#0A0A0A", "#141414", "#0A0A0A"]}
       style={styles.container}
     >
       <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.keyboardView}
       >
         <ScrollView contentContainerStyle={styles.scrollContent}>
           <View style={styles.header}>
             <Text style={styles.logo}>FOCUSVAULT</Text>
-            <Text style={styles.tagline}>Lock Distraction. Unlock Discipline.</Text>
+            <Text style={styles.tagline}>
+              Lock Distraction. Unlock Discipline.
+            </Text>
           </View>
 
           <GlassCard elevated className="mx-6">
             <Text style={styles.title}>Welcome Back</Text>
-            
+
             <View style={styles.inputContainer}>
               <Text style={styles.label}>Email</Text>
               <TextInput
@@ -117,7 +128,7 @@ export default function LoginScreen() {
             <Text style={styles.footerText}>Don't have an account? </Text>
             <Text
               style={styles.link}
-              onPress={() => router.push('/(auth)/signup')}
+              onPress={() => router.push("/(auth)/signup")}
             >
               Sign Up
             </Text>
@@ -131,88 +142,88 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0A0A0A',
+    backgroundColor: "#0A0A0A",
   },
   keyboardView: {
     flex: 1,
   },
   scrollContent: {
     flexGrow: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
     paddingVertical: 40,
   },
   header: {
-    alignItems: 'center',
+    alignItems: "center",
     marginBottom: 40,
   },
   logo: {
     fontSize: 32,
-    fontWeight: '800',
-    color: '#FAFAFA',
+    fontWeight: "800",
+    color: "#FAFAFA",
     letterSpacing: 2,
   },
   tagline: {
     fontSize: 14,
-    color: '#A1A1A1',
+    color: "#A1A1A1",
     marginTop: 8,
   },
   title: {
     fontSize: 24,
-    fontWeight: '700',
-    color: '#FAFAFA',
+    fontWeight: "700",
+    color: "#FAFAFA",
     marginBottom: 24,
-    textAlign: 'center',
+    textAlign: "center",
   },
   inputContainer: {
     marginBottom: 16,
   },
   label: {
     fontSize: 14,
-    fontWeight: '500',
-    color: '#A1A1A1',
+    fontWeight: "500",
+    color: "#A1A1A1",
     marginBottom: 8,
   },
   input: {
-    backgroundColor: '#141414',
+    backgroundColor: "#141414",
     borderRadius: 12,
     padding: 16,
     fontSize: 16,
-    color: '#FAFAFA',
+    color: "#FAFAFA",
     borderWidth: 1,
-    borderColor: '#2A2A2A',
+    borderColor: "#2A2A2A",
   },
   divider: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginVertical: 20,
   },
   dividerLine: {
     flex: 1,
     height: 1,
-    backgroundColor: '#2A2A2A',
+    backgroundColor: "#2A2A2A",
   },
   dividerText: {
-    color: '#525252',
+    color: "#525252",
     marginHorizontal: 12,
     fontSize: 12,
   },
   googleText: {
-    color: '#FAFAFA',
+    color: "#FAFAFA",
     fontSize: 16,
-    fontWeight: '500',
+    fontWeight: "500",
   },
   footer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
     marginTop: 24,
   },
   footerText: {
-    color: '#A1A1A1',
+    color: "#A1A1A1",
     fontSize: 14,
   },
   link: {
-    color: '#3B82F6',
+    color: "#3B82F6",
     fontSize: 14,
-    fontWeight: '600',
+    fontWeight: "600",
   },
 });
