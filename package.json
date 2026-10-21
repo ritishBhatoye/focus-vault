@@ -14,7 +14,8 @@
     "build:prod": "eas build -p ios --profile production",
     "build:android": "eas build -p android --profile production",
     "submit:ios": "eas submit -p ios",
-    "submit:android": "eas submit -p android"
+    "submit:android": "eas submit -p android",
+    "auto-commit": "./scripts/auto-commit.sh"
   },
   "dependencies": {
     "@expo/vector-icons": "^15.0.3",

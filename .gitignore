@@ -16,3 +16,7 @@ node_modules/
 !README.md
 supabase-schema.sql
 STITCH_PROMPT_ULTRA_SHORT.txt
+
+# Auto-commit script tracking file
+.last_push_time
+scripts/auto-commit.sh

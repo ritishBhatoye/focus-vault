@@ -12,7 +12,7 @@ import {
 import { useRouter } from "expo-router";
 import { supabase } from "@/lib/supabase";
 import { Button, GlassCard } from "@/components/ui";
-import { PressableScale } from "@/components/animations";
+// import { PressableScale } from "@/components/animations";
 import { LinearGradient } from "expo-linear-gradient";
 
 export default function SignupScreen() {
