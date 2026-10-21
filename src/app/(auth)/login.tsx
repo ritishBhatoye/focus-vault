@@ -64,20 +64,27 @@ export default function LoginScreen() {
     >
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={styles.keyboardView}
+        // style={styles.keyboardView}
+        className="flex-1"
       >
-        <ScrollView contentContainerStyle={styles.scrollContent}>
-          <View style={styles.header}>
-            <Text style={styles.logo}>FOCUSVAULT</Text>
-            <Text style={styles.tagline}>
+        <ScrollView
+          contentContainerClassName="flex-1 justify-center py-12"
+          // contentContainerStyle={styles.scrollContent}
+        >
+          <View className="items-center mb-12">
+            <Text className="text-2xl font-extrabold text-[#FAFAFA] tracking-widest">
+              FOCUSVAULT
+            </Text>
+            <Text className="text-sm text-[#A1A1A1] mt-2">
               Lock Distraction. Unlock Discipline.
             </Text>
           </View>
 
           <GlassCard elevated className="mx-6">
-            <Text style={styles.title}>Welcome Back</Text>
-
-            <View style={styles.inputContainer}>
+            <Text className="text-2xl font-bold text-[#FAFAFA] mb-6 text-center">
+              Welcome Back
+            </Text>
+            <View className="mb-6">
               <Text style={styles.label}>Email</Text>
               <TextInput
                 style={styles.input}
@@ -90,7 +97,6 @@ export default function LoginScreen() {
                 autoComplete="email"
               />
             </View>
-
             <View style={styles.inputContainer}>
               <Text style={styles.label}>Password</Text>
               <TextInput
@@ -103,23 +109,22 @@ export default function LoginScreen() {
                 autoComplete="password"
               />
             </View>
-
             <Button
               title="Sign In"
               onPress={handleLogin}
               loading={loading}
               className="mt-4"
             />
-
             <View style={styles.divider}>
               <View style={styles.dividerLine} />
               <Text style={styles.dividerText}>or</Text>
               <View style={styles.dividerLine} />
             </View>
-
             <PressableScale onPress={handleGoogleSignIn}>
-              <GlassCard className="flex-row items-center justify-center py-3">
-                <Text style={styles.googleText}>Continue with Google</Text>
+              <GlassCard className="flex-row items-center justify-center p-5">
+                <Text className="text-sm text-[#FAFAFA] font-medium">
+                  Continue with Google
+                </Text>
               </GlassCard>
             </PressableScale>
           </GlassCard>
