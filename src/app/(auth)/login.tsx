@@ -64,7 +64,6 @@ export default function LoginScreen() {
     >
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
-        // style={styles.keyboardView}
         className="flex-1"
       >
         <ScrollView
